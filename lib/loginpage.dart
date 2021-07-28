@@ -9,6 +9,7 @@ class Loginpage extends StatefulWidget {
 class _LoginpageState extends State<Loginpage> {
   String name = "";
   bool changedButton = false;
+  
   moveToHome(BuildContext context) async {
     if (_formkey.currentState.validate()) {
       setState(() {
@@ -112,15 +113,21 @@ class _LoginpageState extends State<Loginpage> {
                         ),
                       )
 
-                      // ElevatedButton(
-                      //   onPressed: () {
-                      //     Navigator.pushNamed(context, Myroutes.homeRoute);
-                      //   },
-                      //   child: Text("login",
-                      //       style: TextStyle(
-                      //           fontSize: 20, fontWeight: FontWeight.bold)),
-                      //   style: TextButton.styleFrom(minimumSize: Size(120, 45)),
-                      // )
+                      ElevatedButton(
+                        onPressed: () {
+                          
+                          final form = _formKey.currentState;
+                          if( form.validate()){
+                            form.save();
+                           Navigator.pushNamed(context, Myroutes.homeRoute);
+                          }
+                         
+                        },
+                        child: Text("login",
+                            style: TextStyle(
+                                fontSize: 20, fontWeight: FontWeight.bold)),
+                        style: TextButton.styleFrom(minimumSize: Size(120, 45)),
+                      )
                     ],
                   ),
                 )
